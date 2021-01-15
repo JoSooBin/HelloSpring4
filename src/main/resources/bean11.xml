@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<!--
+    <bean id="kor" class="JSB.bean.Hellospring4Been04Kor" />
+    <bean id="eng" class="JSB.bean.Hellospring4Been04Eng"/>
+    <bean id="jpn" class="JSB.bean.Hellospring4Been04Jpn"/>
+-->
+
+    <!--IoC가 실행될때 지정한 패키지 내의 모든 클래스를 객체로 선언-->
+    <context:component-scan base-package="JSB.bean.anno" />
+
+</beans>
