@@ -1,16 +1,15 @@
 package JSB.emp;
-import org.springframework.stereotype.Repository;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@Repository("empdao")
-public class EmployeeV3DAO {
+public class EmployeeV3DAOImpl {
     // employees 테이블에서 사원번호,성,이메일,직책,상사,부서번호들을
     // 조회해서 ArrayList로 구성한 후 EmployeeV3Service로 넘김
-    public static ArrayList<EmployeeVo> selectEmp(){
+    public  ArrayList<EmployeeVo> selectEmp(){
         ArrayList<EmployeeVo> emps = new ArrayList<>();
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -41,7 +40,7 @@ public class EmployeeV3DAO {
 
     // 입력받은 사원번호로 employees 테이블에서 조회하고
     // 그 결과를 EmployeesVo로 구성 한 후 EmployeeV3Service로 넘김
-    public static EmployeeVo selectOneEmp(String empid) {
+    public  EmployeeVo selectOneEmp(String empid) {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -70,7 +69,7 @@ public class EmployeeV3DAO {
     }
 
     //입력받은 사원정보를 employees 테이블에 저장함
-    public static String insertEmp(EmployeeVo emp) {
+    public  String insertEmp(EmployeeVo emp) {
         Connection conn = null;
         PreparedStatement pstmt = null;
         String result = "사원데이터 처리중.....";
@@ -100,7 +99,7 @@ public class EmployeeV3DAO {
         return result;
     }
 
-    public static String deleteEmp(int empid) {
+    public  String deleteEmp(int empid) {
         Connection conn = null;
         PreparedStatement pstmt = null;
         String result = "사원정보 삭제처리중....";
@@ -121,7 +120,7 @@ public class EmployeeV3DAO {
     }
 
     //수정할 사원 정보를 넘겨받아
-    public static String updateEmp(EmployeeVo emp){
+    public  String updateEmp(EmployeeVo emp){
         Connection conn = null;
         PreparedStatement pstmt = null;
         String result = "사원정보 수정중.....";

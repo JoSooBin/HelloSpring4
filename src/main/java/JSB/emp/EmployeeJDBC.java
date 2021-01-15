@@ -1,6 +1,5 @@
 package JSB.emp;
 
-import JSB.JDBCUtil;
 
 public class EmployeeJDBC extends JDBCUtil {
     public static String insertEMP = "insert  into employees values (?,?,?,?,?,?,?,?,?,?,?)";
