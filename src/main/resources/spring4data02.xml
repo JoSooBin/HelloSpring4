@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:contect="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--어노테이션 기반 bean 설정-->
+    <contect:component-scan base-package="JSB.data.service, JSB.data.dao" />
+
+    <!--표준 JDBC API : 소규모-->
+    <bean id="basicDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
+        <property name="url" value="jdbc:mariadb://mariadb.czqb0qwcxo45.ap-northeast-2.rds.amazonaws.com:3306/playground"/>
+        <property name="username" value="playground"/>
+        <property name="password" value="playground2020"/>
+    </bean>
+
+    <!--DBCP API : 대규모-->
+    <!--database connection pool-->
+    <!--요청이 올때마다 connection 객체를 생성하는것이 아니라 -->
+    <!--일정 수의 connection 객체를 미리 만들어 pool에 저장해두고 -->
+    <!--요청이 발생하면 pool에서 connection 객체를 가져다 쓰게하는 방식-->
+    <!--connection 객체를 다 사용하면 바ㅗㄹ 파괴하지 않고 pool에 반납-->
+    <bean id="dbcpDataSoure" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
+        <property name="url" value="jdbc:mariadb://mariadb.czqb0qwcxo45.ap-northeast-2.rds.amazonaws.com:3306/playground"/>
+        <property name="username" value="playground"/>
+        <property name="password" value="playground2020"/>
+    </bean>
+
+    <!--JNDI API : 분산환경-->
+
+    <!--스프링 JDBC template 정의 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dbcpDataSoure" />
+    </bean>
+
+</beans>
